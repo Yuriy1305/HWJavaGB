@@ -63,8 +63,9 @@ public class HW4 {
     public static void createField() {
         fieldWidth = inputUserValue("Enter size field");
         fieldHeight = fieldWidth;
-        if (fieldWidth == 5) { 
-           lengthWinningLine = fieldWidth-1; // длина победной линии на 1 мешьше размеров поля для полей больше 4 (или вводим?)
+        if (fieldWidth == 5) {
+            lengthWinningLine = fieldWidth - 1; // длина победной линии на 1 мешьше размеров поля для полей больше 4 (или вводим?)
+            System.out.println("Ддина выигрышной серии=" + lengthWinningLine + "!");
         }
         else {
             lengthWinningLine = fieldWidth;
@@ -137,7 +138,7 @@ public class HW4 {
         if (lengthWinningLine < fieldWidth) {    // только для размера=5, победная серия=4, 4 полные короткие диагонали
                                                 // ниже это же условие для проверки по обычным праввилам серии в 4 ячейки
             if (field[0][1] == playerChar && field[1][2] == playerChar && field[2][3] == playerChar && field[3][4] == playerChar) return true;
-            if (field[1][0] == playerChar && field[2][1] == playerChar && field[3][1] == playerChar && field[4][3] == playerChar) return true;
+            if (field[1][0] == playerChar && field[2][1] == playerChar && field[3][2] == playerChar && field[4][3] == playerChar) return true;
             if (field[0][3] == playerChar && field[1][2] == playerChar && field[2][1] == playerChar && field[3][0] == playerChar) return true;
             if (field[1][4] == playerChar && field[2][3] == playerChar && field[3][2] == playerChar && field[4][1] == playerChar) return true;
         }
