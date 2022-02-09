@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-package HomeWorks.HW6;public class Cat {
-=======
 package HomeWorks.HW6;
 
 public class Cat extends Animal {
@@ -16,6 +13,4 @@ public class Cat extends Animal {
     short swim(int distanceSwim) { // переписываем метод плаванья для котов
         return canNotSwim;
     }
-
->>>>>>> origin/HW6
 }
