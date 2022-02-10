@@ -1,7 +1,5 @@
 package HomeWorks.HW8;
 
-import HomeWorks.HW8.FullGameMap.Map;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -15,11 +13,12 @@ import java.awt.event.ActionListener;
  * Subsequent changes when doing homework by Yuriy Lomtev 06/02/2022
  */
 
-public class FullGameWindow extends JFrame {
-    private int width = 1024;
-    private int height = 768;
-    private int posX = 300;
-    private int posY = 150;
+public class GameWindow extends JFrame {
+
+    private int width = 700;
+    private int height = 500;
+    private int posX = 100;
+    private int posY = 50;
 
     private JButton btnStart;
     private JButton btnExit;
@@ -40,32 +39,33 @@ public class FullGameWindow extends JFrame {
 
     private JTextArea log;
     private JScrollPane scrollLog;
+
     private Map map;
 
-      FullGameWindow() {
+    GameWindow() {
         prepareWindow();
         prepareToolsPanel();
         prepareButtons();
         prepareSettingsPanel();
         prepareGameLog();
 
-          mainToolsPanel.add(settingPanel,BorderLayout.NORTH);
+        map = new Map(this);
+
+        mainToolsPanel.add(settingPanel,BorderLayout.NORTH);
         mainToolsPanel.add(scrollLog, BorderLayout.SOUTH);
 
-        mainToolsPanel.add(mainToolsPanel, BorderLayout.EAST);
-          map = new Map(this);
-          mainToolsPanel.add(map);
+        add(mainToolsPanel, BorderLayout.EAST);
+        add(map);
 
-        mainToolsPanel.setVisible(true);
-
+        setVisible(true);
     }
 
     private void prepareWindow() {
-        mainToolsPanel.setSize(width, height);
-        mainToolsPanel.setLocation(posX, posY);
-//        setTitle("Application");
-//        setResizable(false);
-//        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setSize(width, height);
+        setLocation(posX, posY);
+        setTitle("Application");
+        setResizable(false);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     private void prepareToolsPanel() {
@@ -81,7 +81,6 @@ public class FullGameWindow extends JFrame {
                 collectSettings();
             }
         });
-
         btnExit = new JButton("End game");
         btnExit.addActionListener(new ActionListener() {
             @Override
@@ -89,8 +88,6 @@ public class FullGameWindow extends JFrame {
                 System.exit(0);
             }
         });
-
-
         btnClearLog = new JButton("Clear");
         btnClearLog.addActionListener(new ActionListener() {
             @Override
@@ -114,7 +111,6 @@ public class FullGameWindow extends JFrame {
                 setupWinLength.setMaximum(currentPosition);
             }
         });
-
         labelWinLength = new JLabel("Win length " + MIN_WIN_LENGTH);
         setupWinLength = new JSlider(MIN_WIN_LENGTH, MIN_SIZE_MAP, MIN_WIN_LENGTH);
         setupWinLength.addChangeListener(new ChangeListener() {
@@ -123,7 +119,6 @@ public class FullGameWindow extends JFrame {
                 labelWinLength.setText("Win length " + setupWinLength.getValue());
             }
         });
-
         settingPanel.add(btnStart);
         settingPanel.add(btnExit);
         settingPanel.add(btnClearLog);
@@ -153,6 +148,5 @@ public class FullGameWindow extends JFrame {
         sendToLog("Win Length is " + winLen);
         map.startGame(mapSize, mapSize, winLen);
     }
-
 
 }

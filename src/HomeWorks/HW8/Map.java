@@ -6,13 +6,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
-public class FullGameMap {
     /**
      * Created by Aleksandr Gladkov [Anticisco]
      * Date: 03.02.2022
      * Subsequent changes when doing homework by Yuriy Lomtev 10/02/2022
      */
+
     public class Map extends JPanel {
+
         private final int HUMAN = 1;
         private final int AI = 2;
         private final int EMPTY_FIELD = 0;
@@ -36,11 +37,11 @@ public class FullGameMap {
         private boolean isPressStartButton;
         private boolean isGameOver;
 
-        private FullGameWindow gameWindow;
+        private GameWindow gameWindow;
 
         private Random random = new Random();
 
-        Map(FullGameWindow gameWindow) {
+        Map(GameWindow gameWindow) {
             this.gameWindow = gameWindow;
             setBackground(Color.WHITE);
             isPressStartButton = false;
@@ -137,36 +138,30 @@ public class FullGameMap {
         }
 
         private void renderGame(Graphics g) {
-
             if (!isPressStartButton) {
                 return;
             }
-
             createMap(g);
 
             for (int y = 0; y < mapSizeY; y++) {
                 for (int x = 0; x < mapSizeX; x++) {
-
                     if (isEmptyCell(x,y)) {
                         continue;
                     }
-
                     if (map[y][x] == HUMAN) {
+// выбор цвета и формы фигур хода
                         g.setColor(Color.ORANGE);
                         g.fillOval(x * cellW + 5, y * cellH + 5, cellW - 10, cellH - 10);
                     }
-
                     if (map[y][x] == AI) {
                         g.setColor(Color.RED);
                         g.fillOval(x * cellW + 5, y * cellH + 5, cellW - 10, cellH - 10);
                     }
                 }
             }
-
             if (isGameOver) {
                 return;
             }
-
         }
 
         private void createMap(Graphics g) {
@@ -175,7 +170,7 @@ public class FullGameMap {
 
             cellW = widthMe / mapSizeX;
             cellH = heightMe / mapSizeY;
-
+// прорисовка клеток
             g.setColor(Color.BLACK);
 
             for (int i = 0; i <= mapSizeY; i++) {
@@ -265,11 +260,9 @@ public class FullGameMap {
         private boolean checkVector(int x, int y, int vx, int vy, int len, int checkChar) {
             int farX = x + (len - 1) * vx;
             int farY = y + (len - 1) * vy;
-
             if (!isValidCell(farX, farY)) {
                 return false;
             }
-
             for (int i = 0; i < len; i++) {
                 if (map[y + i * vy][x + i * vx] != checkChar) {
                     return false;
@@ -297,6 +290,3 @@ public class FullGameMap {
             return map[y][x] == EMPTY_FIELD;
         }
     }
-
-}
-
