@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-package HomeWorks.HW6;public class Animal {
-=======
 package HomeWorks.HW6;
 
 public abstract class Animal {
@@ -38,5 +35,4 @@ public abstract class Animal {
             return notSwimDistance;}
         }
 
->>>>>>> origin/HW6
 }
