@@ -3,11 +3,9 @@ package HomeWorksJava2.HW1;
 //        3. Добавить класс Course (полоса препятствий), в котором будут находиться:
 //        массив препятствий;
 //        метод, который будет просить команду пройти всю полосу.
-
 import java.util.Random;
 
 public class Course {
-
     public String doIt(Team team) {
 // препятствия/встречи случайные:
         Random random = new Random();

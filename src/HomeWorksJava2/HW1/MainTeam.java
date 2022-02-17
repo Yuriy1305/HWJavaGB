@@ -7,8 +7,8 @@ package HomeWorksJava2.HW1;
 //        c.doIt(team); // Просим команду пройти полосу
 //        team.showResults(); // Показываем результаты
 //        }
-public class MainTeam {
 
+public class MainTeam {
     public static void main(String[] args) {
        Team team = new Team ();
        team.start(); // инфра о команде и игре
