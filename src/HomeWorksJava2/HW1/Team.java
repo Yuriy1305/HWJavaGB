@@ -1,5 +1,5 @@
 package HomeWorksJava2.HW1;
-
+//   Yuriy Lomtev, 16/02/2022
 //        2. Добавить класс Team, который будет содержать:
 //        +название команды;
 //        +массив из четырех участников — в конструкторе можно сразу всех участников указывать);
@@ -7,11 +7,11 @@ package HomeWorksJava2.HW1;
 //        +метод вывода информации обо всех членах команды.
 
 public class Team {
-     String nameTeam = "Помощники";
-     String[] membersTeam = new String[]{"Внучка", "Жучка", "Кошка", "Мышка"};
+     final String nameTeam = "Помощники";
+     final String[] membersTeam = new String[]{"Внучка", "Жучка", "Кошка", "Мышка"};
 
     public void start() {
-        String players = ": ";
+        String players = " - ";
         for (int i = 0; i < membersTeam.length; i++) {
             if (i == membersTeam.length - 2) {
                 players += membersTeam[i] + " и " + membersTeam[i + 1];
